@@ -1,116 +1,112 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Annual Global Deforestation (1990 - 2015)</title>
+  <!-- Vega, Vega-Lite, and Vega-Embed libraries for rendering the visualization -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.20.8"></script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background-color: #f5f5f5;
-    }
-    #vis {
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      padding: 15px;
-    }
-    .description {
-      margin-bottom: 20px;
-      max-width: 800px;
-    }
-  </style>
 </head>
 <body>
-  <div class="description">
-    <h1>Global Deforestation Visualization</h1>
-    <p>This choropleth map shows deforestation rates across countries from 1990 to 2015. Countries with higher deforestation rates are shown in darker shades of red.</p>
-  </div>
-  <div id="vis"></div>
+  <!-- Container for the visualization -->
+  <div id="vis"/>
   <script>
+
+    // Vega-Lite specification for the deforestation choropleth map
     const spec = {
-      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "title": "Annual Global Deforestation (1990 - 2015)",
-      "width": 800,
-      "height": 500,
-      "data": {
-        "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/3_choropleth_map/js/ne_110m_admin_0_countries.topojson",
-        "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
-      },
-      "projection": {"type": "equalEarth"},
-      "layer": [
+
+  // Vega-Lite schema and basic chart properties
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Deforestation (km²) per Country (1990 - 2015)",
+  "width": 800,
+  "height": 400,
+
+  // Load world country boundaries as TopoJSON
+  "data": {
+    "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/3_choropleth_map/js/ne_110m_admin_0_countries.topojson",
+    "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+  },
+
+  // Use the Equal Earth map projection
+  "projection": {"type": "equalEarth"},
+  "layer": [
+
+    // Layer 1: Show countries with no deforestation data in light gray
+    {
+      "transform": [
         {
-          "transform": [
-            {
-              "calculate": "'Deforestation data is not available for ' + datum.properties.NAME",
-              "as": "note"
-            }
-          ],
-          "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"},
-          "encoding": {"tooltip": {"field": "note"}}
-        },
-        {
-          "data": {
-            "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/7_others/oceans.topojson",
-            "format": {"type": "topojson", "feature": "oceans"}
-          },
-          "mark": {"type": "geoshape", "fill": "skyblue"}
-        },
-        {
-          "data": {
-            "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/WorldMapWithGraticules.topojson",
-            "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
-          },
-          "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
-        },
-        {
-          "transform": [
-            {
-              "lookup": "properties.NAME",
-              "from": {
-                "data": {
-                  "url": "https://raw.githubusercontent.com/awal0069/FIT3179/refs/heads/main/Project%202/data/annual-deforestation.csv"
-                },
-                "key": "Entity",
-                "fields": ["Deforestation", "Year"]
-              }
-            }
-          ],
-          "mark": {"type": "geoshape", "stroke": "white"},
-          "encoding": {
-            "color": {
-              "field": "Deforestation",
-              "type": "quantitative",
-              "scale": {
-                "type": "linear",
-                "domain": [0, 200000],
-                "range": ["#f5f5f5", "#de2d26"]
-              },
-              "legend": {
-                "title": "Annual Deforestation (sq km)",
-                "direction": "horizontal",
-                "orient": "bottom"
-              }
-            },
-            "tooltip": [
-              {"field": "properties.NAME", "type": "nominal", "title": "Country"},
-              {"field": "Deforestation", "type": "quantitative", "title": "Deforestation (sq km)"},
-              {"field": "Year", "type": "quantitative", "title": "Year"}
-            ]
-          }
+          "calculate": "'Deforestation data is not available for ' + datum.properties.NAME",
+          "as": "note"
         }
       ],
-      "config": {
-        "view": {"stroke": null},
-        "legend": {
-          "gradientLength": 300,
-          "labelLimit": 0
-        }
+      "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"},
+      "encoding": {"tooltip": {"field": "note"}}
+    },
+
+    // Layer 2: Draw oceans in blue
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/7_others/oceans.topojson",
+        "format": {"type": "topojson", "feature": "oceans"}
+      },
+      "mark": {"type": "geoshape", "fill": "skyblue"}
+    },
+
+    // Layer 3: Draw graticules (latitude/longitude grid lines)
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/WorldMapWithGraticules.topojson",
+        "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
+      },
+      "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
+    },
+
+    // Layer 4: Choropleth map showing deforestation data for each country (by ISO_A3 code)
+    {
+      "transform": [
+        {
+          // Only show data for the selected year
+          "filter": "datum.Year == 2015",
+
+          // Lookup deforestation data by country code
+          "lookup": "properties.ISO_A3",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/awal0069/FIT3179/refs/heads/main/Project%202/data/annual-deforestation.csv"
+            },
+            "key": "Code",
+            "fields": ["Deforestation", "Year", "Entity"]
+          }
+        },
+      ],
+      "mark": {"type": "geoshape", "stroke": "white"},
+      "encoding": {
+
+        // Color countries by deforestation value
+        "color": {
+          "field": "Deforestation",
+          "type": "quantitative",
+          "scale": {
+        "type": "threshold",
+        "domain": [1000, 10000, 50000, 100000, 200000],
+        "range": ["#fff5f0", "#fcbba1", "#fb6a4a", "#de2d26", "#a50f15", "#67000d"]
+          }
+        },
+
+        // Tooltip shows country name, deforestation, and year
+        "tooltip": [
+          {"field": "Entity", "type": "nominal", "title": "Country"},
+          {"field": "Deforestation", "type": "quantitative", "title": "Deforestation (km²)"},
+          {"field": "Year", "type": "quantitative", "title": "Year"}
+        ]
       }
-    };
-    
+    }
+  ],
+
+  // Chart config (empty here, but can be used for further customization)
+  "config": {}
+};
+
+    // Render the visualization in the #vis container
     vegaEmbed("#vis", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
   </script>
 </body>
