@@ -55,11 +55,17 @@
                         "data": {
                             "url": "https://raw.githubusercontent.com/awal0069/FIT3179/refs/heads/main/Project%202/data/annual-deforestation.csv"
                         },
-                        "key": "Country"
+                        "key": "Country",
+                        "fields": ["Deforestation", "Year"]
                     },
                     "as": "deforestation"
                 },
-                { "filter": "datum.deforestation != null && datum.deforestation.Year == Year_selection" }
+                { 
+                    "filter": {
+                        "field": "deforestation.Year",
+                        "equal": {"expr": "Year_selection"}
+                    }
+                }
             ],
             "mark": {
                 "type": "geoshape",
@@ -73,11 +79,19 @@
                     "scale": {
                         "scheme": "reds"
                     },
-                    "legend": { "title": "Deforestation (km²)" }
+                    "legend": { 
+                        "title": "Deforestation (km²)",
+                        "format": ".2f"
+                    }
                 },
                 "tooltip": [
                     { "field": "properties.NAME", "type": "nominal", "title": "Country" },
-                    { "field": "deforestation.Deforestation", "type": "quantitative", "title": "Deforestation (km²)" },
+                    { 
+                        "field": "deforestation.Deforestation", 
+                        "type": "quantitative", 
+                        "title": "Deforestation (km²)",
+                        "format": ".2f"
+                    },
                     { "field": "deforestation.Year", "type": "quantitative", "title": "Year" }
                 ]
             }
