@@ -16,14 +16,14 @@
 
   // Vega-Lite schema and basic chart properties
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Deforestation (km²) per Country (1990 - 2015)",
+  "title": "Deforestation (km²) per Country (1990)",
   "width": 800,
   "height": 400,
 
   // Load world country boundaries as TopoJSON
   "data": {
     "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/3_choropleth_map/js/ne_110m_admin_0_countries.topojson",
-    "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+    "format": {"type": "topojson", "feature": "countries"}
   },
 
   // Use the Equal Earth map projection
@@ -64,34 +64,29 @@
     {
       "transform": [
         {
-          // Only show data for the selected year
-          "filter": "datum.Year == 2015",
-
-          // Lookup deforestation data by country code
+          // Lookup deforestation data by country code for 1990 only
           "lookup": "properties.ISO_A3",
           "from": {
             "data": {
-              "url": "https://raw.githubusercontent.com/awal0069/FIT3179/refs/heads/main/Project%202/data/annual-deforestation.csv"
+              "url": "https://raw.githubusercontent.com/awal0069/FIT3179/refs/heads/main/Project%202/data/deforestation1990.csv"
             },
             "key": "Code",
             "fields": ["Deforestation", "Year", "Entity"]
           }
-        },
+        }
       ],
       "mark": {"type": "geoshape", "stroke": "white"},
       "encoding": {
-
         // Color countries by deforestation value
         "color": {
           "field": "Deforestation",
           "type": "quantitative",
           "scale": {
-        "type": "threshold",
-        "domain": [1000, 10000, 50000, 100000, 200000],
-        "range": ["#fff5f0", "#fcbba1", "#fb6a4a", "#de2d26", "#a50f15", "#67000d"]
+            "type": "threshold",
+            "domain": [1000, 10000, 50000, 100000, 200000],
+            "range": ["#fff5f0", "#fcbba1", "#fb6a4a", "#de2d26", "#a50f15", "#67000d"]
           }
         },
-
         // Tooltip shows country name, deforestation, and year
         "tooltip": [
           {"field": "Entity", "type": "nominal", "title": "Country"},
