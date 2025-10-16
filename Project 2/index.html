@@ -1,53 +1,98 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>Global Deforestation Visualization</title>
-    <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
-    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
-
-    <!-- Import pure.css -->
-    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Google font -->
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700;900&display=swap" rel="stylesheet">
-
-    <!-- CSS file -->
-    <link rel="stylesheet" type="text/css" href="css/style.css" media="all">
-
-
+  <meta charset="UTF-8">
+  <title>Global Deforestation Visualization</title>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.20.8"></script>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 10px;
+      max-width: 1000px;
+    }
+    .grid-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .grid-item h3 {
+      margin: 5px 0;
+      text-align: left;
+      font-size: 14px;
+    }
+    .vis-container {
+      width: 100%;
+      height: 300px;
+    }
+    h2 {
+      text-align: left;
+      margin-bottom: 20px;
+      font-size: 28px;
+      font-weight: bold;
+    }
+  </style>
 </head>
-
 <body>
-
-
-    <div class="page">
-        <h2>Global Deforestation Choropleth Map</h2>
-        <div class="pure-g">
-            <div class="pure-u-1-1">
-                <div id="vis" class="vis-container"></div>
-            </div>
-        </div>
-        <br>
+  <h2>Earth's Environmental Wellbeing</h2>
+  
+  <div class="grid-container">
+    <!-- Top Left - 1990 -->
+    <div class="grid-item">
+      <div id="vis1990" class="vis-container"></div>
     </div>
+    
+    <!-- Top Right - 2000 -->
+    <div class="grid-item">
+      <div id="vis2000" class="vis-container"></div>
+    </div>
+    
+    <!-- Bottom Left - 2010 -->
+    <div class="grid-item">
+      <div id="vis2010" class="vis-container"></div>
+    </div>
+    
+    <!-- Bottom Right - 2015 -->
+    <div class="grid-item">
+      <div id="vis2015" class="vis-container"></div>
+    </div>
+  </div>
 
+  <script type="text/javascript">
+    // Function to embed all visualizations
+    function embedAllVisualizations() {
+      // Embed 1990 visualization
+      vegaEmbed('#vis1990', 'js/deforestation1990.vg.json', {
+        actions: false
+      }).catch(console.error);
+      
+      // Embed 2000 visualization
+      vegaEmbed('#vis2000', 'js/deforestation2000.vg.json', {
+        actions: false
+      }).catch(console.error);
+      
+      // Embed 2010 visualization
+      vegaEmbed('#vis2010', 'js/deforestation2010.vg.json', {
+        actions: false
+      }).catch(console.error);
+      
+      // Embed 2015 visualization
+      vegaEmbed('#vis2015', 'js/deforestation2015.vg.json', {
+        actions: false
+      }).catch(console.error);
+    }
 
-    <script type="text/javascript">
-        var specVis = "https://raw.githubusercontent.com/awal0069/FIT3179/refs/heads/main/Project%202/js/choropleth_deforestation_map.vg.json";
-        
-        vegaEmbed('#vis', specVis)
-            .then(function(result) {
-                // Successfully rendered visualization
-                console.log("Visualization loaded successfully");
-            })
-            .catch(function(error) {
-                // Error handling
-                console.error("Error loading visualization:", error);
-            });
-    </script>
+    // Embed all visualizations when the page loads
+    document.addEventListener('DOMContentLoaded', embedAllVisualizations);
+  </script>
 </body>
-
 </html>

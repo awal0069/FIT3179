@@ -7,7 +7,7 @@
       "height": 400,
       "title": "Share of land covered by forest by country",
       "data": {
-        "url": "forest-area-as-share-of-land-area.csv",
+        "url": "https://raw.githubusercontent.com/awal0069/FIT3179/refs/heads/main/Project%202/data/forest-area-as-share-of-land-area.csv",
         "format": {"type": "csv"}
       },
       "transform": [
@@ -47,7 +47,7 @@
           }
         },
         {
-          "selection": {
+          "select": {
             "hover": {
               "type": "single",
               "on": "mouseover",
@@ -145,4 +145,3 @@
     "title": {"font": "sans-serif", "fontSize": 14}
   }
 }
-```
