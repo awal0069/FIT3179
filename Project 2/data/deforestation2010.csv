@@ -1,9 +1,7 @@
-Entity,Code,Year,Deforestation
-Africa,,2010,4444000
+Country,Code,Year,Deforestation
 Algeria,DZA,2010,1400
 Argentina,ARG,2010,242400
 Aruba,ABW,2010,0
-Asia,,2010,2925000
 Australia,AUS,2010,416840
 Austria,AUT,2010,5800
 Azerbaijan,AZE,2010,81640
@@ -37,7 +35,6 @@ El Salvador,SLV,2010,4500
 Equatorial Guinea,GNQ,2010,8360
 Estonia,EST,2010,11230
 Ethiopia,ETH,2010,92000
-Europe,,2010,201000
 Falkland Islands,FLK,2010,0
 Faroe Islands,FRO,2010,0
 Finland,FIN,2010,540
@@ -89,7 +86,6 @@ Niger,NER,2010,14920
 Nigeria,NGA,2010,163310
 North Korea,PRK,2010,23190
 Norway,NOR,2010,5980
-Oceania,,2010,458000
 Panama,PAN,2010,12520
 Papua New Guinea,PNG,2010,30900
 Paraguay,PRY,2010,414250
