@@ -10,88 +10,96 @@
     body { 
       font-family: Arial, sans-serif; 
       margin: 0;
-      padding: 20px;
+      padding: 40px;
       min-height: 100vh;
+      background-color: #fafafa;
     }
-    .grid-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto auto;
-      gap: 10px;
-      max-width: 1000px;
-    }
-    .grid-item {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    .grid-item h3 {
-      margin: 5px 0;
-      text-align: left;
-      font-size: 14px;
-    }
-    .vis-container {
-      width: 100%;
-      height: 300px;
-    }
+
     h2 {
       text-align: left;
       margin-bottom: 20px;
       font-size: 28px;
       font-weight: bold;
+      margin-left: 60px; /* aligns with bubble position */
+    }
+
+    /* === Bubble container === */
+    .bubble {
+      background-color: #fff;
+      border: 2px solid #ddd;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 20px 30px;
+      width: 80vw;                /* wider bubble */
+      max-width: 1300px;          /* allows more space for charts */
+      margin-left: 75px;          /* shift toward left */
+      margin-top: 10px;
+    }
+
+    /* === Grid layout for visualizations === */
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      column-gap: 20px;          /* horizontal spacing */
+      row-gap: 5px;              /* reduced vertical gap */
+      width: 100%;
+    }
+
+    .grid-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .grid-item h3 {
+      margin: 5px 0;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    .vis-container {
+      width: 100%;
+      height: 300px;
     }
   </style>
 </head>
 <body>
   <h2>Earth's Environmental Wellbeing</h2>
   
-  <div class="grid-container">
-    <!-- Top Left - 1990 -->
-    <div class="grid-item">
-      <div id="vis1990" class="vis-container"></div>
-    </div>
-    
-    <!-- Top Right - 2000 -->
-    <div class="grid-item">
-      <div id="vis2000" class="vis-container"></div>
-    </div>
-    
-    <!-- Bottom Left - 2010 -->
-    <div class="grid-item">
-      <div id="vis2010" class="vis-container"></div>
-    </div>
-    
-    <!-- Bottom Right - 2015 -->
-    <div class="grid-item">
-      <div id="vis2015" class="vis-container"></div>
+  <div class="bubble">
+    <div class="grid-container">
+      <!-- Top Left - 1990 -->
+      <div class="grid-item">
+        <div id="vis1990" class="vis-container"></div>
+      </div>
+      
+      <!-- Top Right - 2000 -->
+      <div class="grid-item">
+        <div id="vis2000" class="vis-container"></div>
+      </div>
+      
+      <!-- Bottom Left - 2010 -->
+      <div class="grid-item">
+        <div id="vis2010" class="vis-container"></div>
+      </div>
+      
+      <!-- Bottom Right - 2015 -->
+      <div class="grid-item">
+        <div id="vis2015" class="vis-container"></div>
+      </div>
     </div>
   </div>
 
   <script type="text/javascript">
     // Function to embed all visualizations
     function embedAllVisualizations() {
-      // Embed 1990 visualization
-      vegaEmbed('#vis1990', 'js/deforestation1990.vg.json', {
-        actions: false
-      }).catch(console.error);
-      
-      // Embed 2000 visualization
-      vegaEmbed('#vis2000', 'js/deforestation2000.vg.json', {
-        actions: false
-      }).catch(console.error);
-      
-      // Embed 2010 visualization
-      vegaEmbed('#vis2010', 'js/deforestation2010.vg.json', {
-        actions: false
-      }).catch(console.error);
-      
-      // Embed 2015 visualization
-      vegaEmbed('#vis2015', 'js/deforestation2015.vg.json', {
-        actions: false
-      }).catch(console.error);
+      vegaEmbed('#vis1990', 'js/deforestation1990.vg.json', { actions: false }).catch(console.error);
+      vegaEmbed('#vis2000', 'js/deforestation2000.vg.json', { actions: false }).catch(console.error);
+      vegaEmbed('#vis2010', 'js/deforestation2010.vg.json', { actions: false }).catch(console.error);
+      vegaEmbed('#vis2015', 'js/deforestation2015.vg.json', { actions: false }).catch(console.error);
     }
 
-    // Embed all visualizations when the page loads
     document.addEventListener('DOMContentLoaded', embedAllVisualizations);
   </script>
 </body>
