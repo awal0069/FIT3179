@@ -99,6 +99,58 @@
     <p>CO2 emissions have grown exponentially since the Industrial Revolution, driven by coal, oil, and gas combustion across expanding industrial and transport systems. Annual global emissions have climbed to an all-time high exceeding 35 billion tonnes of CO2 per year and continue to rise. The geographic pattern of emissions has shifted dramatically over recent decades. In 1990 the United States was the dominant emitter, responsible for roughly 22.5% of global CO2 from 195 countries. Since then industrialization and energy-intensive development have propelled China to the forefront; by 2023 China accounted for about 31.5% of global CO2 emissions, a share larger than that of all other Asian countries combined. This reallocation of emissions between regions increases the importance of global cooperation on decarbonization, technology transfer, and emissions reductions to prevent further growth in atmospheric CO2 and associated climate impacts.</p>
   </div>
 
+  <!-- New passage for plastic waste -->
+  <div class="passage-bubble">
+    <p>Beyond carbon emissions and deforestation, plastic pollution represents another critical threat to our oceans and waterways. Mismanaged plastic waste often finds its way into rivers and oceans, harming marine ecosystems and entering the food chain. The relationship between economic development and plastic waste is complex - while wealthier nations typically have better waste management systems, they also tend to consume more plastic products. The scatter plot below explores this relationship, showing how GDP per capita correlates with mismanaged plastic waste per capita across different countries and regions.</p>
+  </div>
+
+  <!-- Plastic Waste Scatter Plot Visualization Bubble -->
+  <div class="bubble">
+    <div class="grid-container">
+      <div class="grid-item">
+        <div id="scatter_plot" class="vis-container"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Plastic waste impact passage -->
+  <div class="passage-bubble">
+    <p>The distribution of ocean plastic pollution reveals stark disparities in waste management capabilities across nations. While high-GDP countries like the United States and Singapore generate substantial plastic waste, their advanced waste infrastructure prevents most of it from reaching oceans. In contrast, several middle-income developing nations—particularly in Southeast Asia—bear disproportionate responsibility for marine plastic pollution. The Philippines emerges as the largest contributor with 3.3 kg of mismanaged plastic waste per capita reaching oceans annually, followed by Malaysia (2.3 kg) and several Caribbean nations including Saint Lucia (2.5 kg) and Trinidad and Tobago (2.5 kg). These countries often experience rapid economic growth without commensurate investment in waste management systems, creating a dangerous gap between consumption and disposal capacity.</p>
+    
+    <p>This plastic pollution devastates marine ecosystems through multiple pathways. Large plastic debris entangles and kills marine mammals, sea turtles, and seabirds, while microplastics infiltrate food chains from plankton to apex predators. Plastic fragments absorb toxic chemicals from seawater, concentrating pollutants that then biomagnify through marine food webs. Coral reefs suffer from plastic-induced disease outbreaks, while coastal ecosystems face habitat degradation. The economic costs are equally severe, with fisheries, tourism, and shipping industries bearing billions in annual losses. Perhaps most alarmingly, plastic pollution interacts with climate change—floating plastic particles transport invasive species to new regions and darken Arctic ice, accelerating melting. This complex environmental crisis demands coordinated international action, focusing not only on waste management infrastructure in high-contributing nations but also on reducing global plastic production and consumption.</p>
+  </div>
+
+  <!-- Footer Section -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-author">
+          <p class="footer-name">Written by Artan Walker</p>
+          <p class="footer-details">Student at Monash University Clayton Campus</p>
+          <p class="footer-details">Victoria, Australia</p>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <div class="footer-meta">
+          <p class="footer-date">Date published: 19/10/2025</p>
+          <p class="footer-ai">AI assistance used for error identification and script formatting</p>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <div class="footer-sources">
+          <p class="footer-sources-title">Data Sources:</p>
+          <div class="source-links">
+            <a href="https://ourworldindata.org/ocean-plastics" target="_blank">Our World in Data - Ocean Plastics</a>
+            <a href="https://ourworldindata.org/co2-emissions" target="_blank">Our World in Data - CO2 Emissions</a>
+            <a href="https://ourworldindata.org/deforestation" target="_blank">Our World in Data - Deforestation</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
   <script type="text/javascript">
     // Function to embed all visualizations
     function embedVisualizations() {
@@ -119,6 +171,11 @@
       
       // Embed CO2 emissions by region visualization
       vegaEmbed('#co2_region_emissions', 'js/regionalCo2Percentage.json', { 
+        actions: false 
+      }).catch(console.error);
+      
+      // Embed scatter plot visualization
+      vegaEmbed('#scatter_plot', 'js/scatterPlot.json', { 
         actions: false 
       }).catch(console.error);
     }

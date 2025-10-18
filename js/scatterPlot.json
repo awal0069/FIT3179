@@ -1,0 +1,133 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 850,
+  "height": 500,
+  "title": "Plastic Waste to Ocean vs GDP per Capita (2019)",
+  "data": {
+    "url": "https://raw.githubusercontent.com/awal0069/FIT3179/refs/heads/main/data/ocean-plastic-waste-per-capita-vs-gdp.csv"
+  },
+  "params": [
+    {
+      "name": "Region_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Africa",
+          "Asia",
+          "Europe",
+          "North America",
+          "Oceania",
+          "South America"
+        ],
+        "labels": [
+          "Show All",
+          "Africa",
+          "Asia",
+          "Europe",
+          "North America",
+          "Oceania",
+          "South America"
+        ],
+        "name": "Region Selection: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "Region_selection == null || datum['World regions according to OWID'] == Region_selection"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "GDP per capita, PPP (constant 2021 international $)",
+      "type": "quantitative",
+      "title": "GDP per capita (PPP, constant 2021 international $)",
+      "axis": {"tickCount": 7},
+      "scale": {"type": "log"}
+    },
+    "y": {
+      "field": "Mismanaged plastic waste to ocean per capita (kg per year)",
+      "type": "quantitative",
+      "title": "Mismanaged plastic waste to ocean per capita (kg per year)",
+      "axis": {"tickCount": 6},
+      "scale": {"type": "linear", "domain": [0, 3.5]}
+    }
+  },
+  "layer": [
+    {
+      "mark": "circle",
+      "encoding": {
+        "size": {
+          "value": 60
+        },
+        "color": {
+          "field": "World regions according to OWID",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Africa",
+              "Asia",
+              "Europe",
+              "North America",
+              "Oceania",
+              "South America"
+            ],
+            "range": [
+              "#1f77b4",
+              "#ff7f0e",
+              "#2ca02c",
+              "#d62728",
+              "#9467bd",
+              "#8c564b"
+            ]
+          }
+        },
+        "opacity": {"value": 0.6},
+        "tooltip": [
+          {"field": "Entity", "type": "nominal", "title": "Country"},
+          {"field": "World regions according to OWID", "type": "nominal", "title": "Region"},
+          {"field": "GDP per capita, PPP (constant 2021 international $)", "type": "quantitative", "title": "GDP per capita", "format": ",.0f"},
+          {"field": "Mismanaged plastic waste to ocean per capita (kg per year)", "type": "quantitative", "title": "Plastic waste to ocean (kg/year)", "format": ".3f"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -12,
+        "fontSize": 11.5,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "text": {"field": "Entity", "type": "nominal"},
+        "color": {"value": "black"},
+        "opacity": {
+          "condition": {
+            "test": "datum['Entity'] == 'China' || datum['Entity'] == 'United States' || datum['Entity'] == 'India' || datum['Entity'] == 'Brazil' || datum['Entity'] == 'Indonesia' || datum['Entity'] == 'Philippines' || datum['Entity'] == 'Malaysia' || datum['Entity'] == 'Vietnam'",
+            "value": 1
+          },
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "Entity", "type": "nominal", "title": "Country"},
+          {"field": "World regions according to OWID", "type": "nominal", "title": "Region"},
+          {"field": "GDP per capita, PPP (constant 2021 international $)", "type": "quantitative", "title": "GDP per capita", "format": ",.0f"},
+          {"field": "Mismanaged plastic waste to ocean per capita (kg per year)", "type": "quantitative", "title": "Plastic waste to ocean (kg/year)", "format": ".3f"}
+        ]
+      }
+    }
+  ],
+  "config": {
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 14
+    },
+    "title": {
+      "fontSize": 20,
+      "fontWeight": "bold"
+    }
+  }
+}

@@ -46,11 +46,15 @@ body {
 }
 
 .passage-bubble p {
-    margin: 0;
+    margin: 0 0 20px 0;
     font-size: 16px;
     line-height: 1.6;
     color: #333;
     text-align: justify;
+}
+
+.passage-bubble p:last-child {
+    margin-bottom: 0;
 }
 
 /* Heading styles */
@@ -146,8 +150,8 @@ h2 {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto auto;
     gap: 20px;
-    width: 80vw;
-    max-width: 1300px;
+    width: calc(80vw + 60px);
+    max-width: calc(1300px + 60px);
     margin: 20px auto;
     padding: 0;
 }
@@ -160,6 +164,8 @@ h2 {
     padding: 25px;
     height: fit-content;
     margin: 0;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .region-bubble h3 {
@@ -180,32 +186,10 @@ h2 {
     text-align: justify;
 }
 
-/* Calculate exact widths to match visualization bubble */
-.regional-grid {
-    width: calc(80vw + 60px); /* Same as .bubble width + padding */
-    max-width: calc(1300px + 60px); /* Same as .bubble max-width + padding */
-    margin: 20px auto;
-}
-
-.region-bubble {
-    width: 100%;
-    box-sizing: border-box;
-}
-
-/* Responsive design for smaller screens */
-@media (max-width: 768px) {
-    .regional-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        width: 80vw;
-        max-width: 1300px;
-    }
-}
-
 /* CO2 Emissions specific styling */
 .co2-container {
     width: 100%;
-    height: 600px; /* Increased to fit 400px + 100px charts + padding */
+    height: 600px;
 }
 
 /* Ensure the CO2 visualization fits within the container */
@@ -219,18 +203,6 @@ h2 {
     height: auto;
 }
 
-/* Maintain existing bubble styling */
-.bubble {
-    background-color: #ffffff;
-    border: 2px solid #ddd;
-    border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 20px 30px;
-    width: 80vw;
-    max-width: 1300px;
-    margin: 10px auto;
-}
-
 /* CO2 Emissions by Region specific styling */
 #co2_region_emissions .vega-embed {
     width: 100% !important;
@@ -240,4 +212,127 @@ h2 {
 #co2_region_emissions .vega-embed canvas {
     max-width: 100%;
     height: auto;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .regional-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        width: 80vw;
+        max-width: 1300px;
+    }
+}
+
+/* Footer Styles */
+.site-footer {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 30px 20px;
+    margin-top: 40px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1300px;
+    margin: 0 auto;
+    gap: 40px;
+}
+
+.footer-section {
+    flex: 1;
+}
+
+.footer-author {
+    margin-bottom: 20px;
+}
+
+.footer-name {
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0 0 8px 0;
+    color: #ffffff;
+}
+
+.footer-details {
+    font-size: 14px;
+    margin: 4px 0;
+    color: #cccccc;
+    line-height: 1.4;
+}
+
+.footer-meta {
+    margin-bottom: 20px;
+}
+
+.footer-date {
+    font-size: 14px;
+    margin: 0 0 12px 0;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.footer-ai {
+    font-size: 13px;
+    margin: 0;
+    color: #cccccc;
+    font-style: italic;
+}
+
+.footer-sources-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 0 12px 0;
+    color: #ffffff;
+}
+
+.source-links {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.source-links a {
+    color: #4da6ff;
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.3s ease;
+}
+
+.source-links a:hover {
+    color: #80c1ff;
+    text-decoration: underline;
+}
+
+/* Ensure footer sticks to bottom */
+body {
+    position: relative;
+    min-height: 100vh;
+}
+
+.site-footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+/* Responsive design for footer */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 25px;
+    }
+    
+    .footer-section {
+        width: 100%;
+    }
+    
+    .source-links {
+        flex-direction: column;
+    }
 }
