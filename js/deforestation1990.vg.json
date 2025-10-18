@@ -36,7 +36,7 @@
           "lookup": "properties.NAME",
           "from": {
             "data": {
-              "url": "https://raw.githubusercontent.com/awal0069/FIT3179/refs/heads/main/Project%202/data/deforestation1990.csv"
+              "url": "https://raw.githubusercontent.com/awal0069/FIT3179/refs/heads/main/data/deforestation1990.csv"
             },
             "key": "Country",
             "fields": ["Year", "Code", "Deforestation"]
