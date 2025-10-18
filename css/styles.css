@@ -201,3 +201,21 @@ h2 {
         max-width: 1300px;
     }
 }
+
+/* CO2 Emissions specific styling if needed */
+#co2_emissions {
+    width: 100%;
+    height: 350px; /* Slightly taller to accommodate both charts */
+}
+
+/* Ensure the CO2 bubble matches others */
+.bubble {
+    background-color: #ffffff;
+    border: 2px solid #ddd;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px 30px;
+    width: 80vw;
+    max-width: 1300px;
+    margin: 10px auto;
+}
