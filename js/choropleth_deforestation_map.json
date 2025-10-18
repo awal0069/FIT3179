@@ -3,6 +3,12 @@
     "title": "Global Deforestation by Country",
     "width": "container",
     "height": 500,
+    "config": {
+        "title": {
+            "fontSize": 20,
+            "anchor": "middle"
+        }
+    },
     "params": [
         {
             "name": "Year_selection",
@@ -99,6 +105,5 @@
                 ]
             }
     }
-    ],
-    "config": {}
+    ]
 }

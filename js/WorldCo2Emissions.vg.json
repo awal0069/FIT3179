@@ -1,10 +1,17 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Global CO₂ Emissions Over Time",
+    "config": {
+        "title": {
+            "fontSize": 20,
+            "anchor": "middle"
+        }
+    },
     "data": { "url": "https://raw.githubusercontent.com/awal0069/FIT3179/refs/heads/main/data/world-co2-emissions.csv" },
     "vconcat": [{
-        "width": "container",
-        "height": 240,
-        "mark": "area",
+        "width": 1125,
+        "height": 400,
+        "mark": { "type": "area", "color": "#333333" },
         "encoding": {
             "x": {
                 "field": "Year",
@@ -12,12 +19,12 @@
                 "scale": { "domain": { "param": "brush" } },
                 "axis": { "title": "", "tickCount": 10 }
             },
-            "y": { "field": "Annual CO₂ emissions", "type": "quantitative" }
+            "y": { "field": "Annual CO₂ emissions", "type": "quantitative", "title": "CO₂ Emissions" }
         }
     }, {
-        "width": "container",
-        "height": 60,
-        "mark": "area",
+        "width": 1125,
+        "height": 100,
+        "mark": { "type": "area", "color": "#333333" },
         "params": [{
             "name": "brush",
             "select": { "type": "interval", "encodings": ["x"] }
@@ -26,12 +33,12 @@
             "x": {
                 "field": "Year",
                 "type": "temporal",
-                "axis": { "tickCount": 10 }
+                "axis": { "tickCount": 10, "title": "Year Filter" }
             },
             "y": {
                 "field": "Annual CO₂ emissions",
                 "type": "quantitative",
-                "axis": { "tickCount": 3, "grid": false }
+                "axis": { "tickCount": 3, "grid": false, "title": "" }
             }
         }
     }]

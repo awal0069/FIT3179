@@ -72,16 +72,35 @@
     </div>
   </div>
 
+  <!-- New passage connecting deforestation to CO2 emissions -->
+  <div class="passage-bubble">
+    <p>Rising deforestation in past decades has weakened Earth's capacity to absorb carbon dioxide by removing and degrading vast carbon sinks. Trees that once fixed CO2 through photosynthesis were cut or burned, releasing stored carbon and reducing future uptake as regrowth lags or is prevented by land conversion. Soil disturbance and loss of biomass further diminished long-term carbon sequestration, while fragmented and degraded forests store far less carbon per hectare than intact ecosystems. As a result, the terrestrial biosphere shifted from buffering emissions toward contributing additional CO2. This loss of sink strength coincided with accelerating fossil fuel combustion and industrial activity, so atmospheric CO2 concentrations have risen steadily as shown below. Reduced natural uptake magnified the effect of emissions, lengthening CO2's atmospheric residence and increasing radiative forcing. Higher CO2 levels follow both direct emissions from clearing and the diminished capacity of land to absorb continuing emissions, driving the observed long-term increase in global atmospheric CO2.</p>
+  </div>
+
+  <!-- CO2 Emissions Visualization Bubble -->
+  <div class="bubble">
+    <div class="grid-container">
+      <div class="grid-item">
+        <div id="co2_emissions" class="vis-container co2-container"></div>
+      </div>
+    </div>
+  </div>
+
   <script type="text/javascript">
-    // Function to embed both visualizations
+    // Function to embed all visualizations
     function embedVisualizations() {
       // Embed choropleth map
-      vegaEmbed('#choropleth_map', 'https://raw.githubusercontent.com/awal0069/FIT3179/refs/heads/main/js/choropleth_deforestation_map.json', { 
+      vegaEmbed('#choropleth_map', 'js/choropleth_deforestation_map.json', { 
         actions: false 
       }).catch(console.error);
       
       // Embed line graph
       vegaEmbed('#line_graph', 'js/interactiveForestCoverage.json', { 
+        actions: false 
+      }).catch(console.error);
+      
+      // Embed CO2 emissions visualization
+      vegaEmbed('#co2_emissions', 'js/WorldCo2Emissions.vg.json', { 
         actions: false 
       }).catch(console.error);
     }

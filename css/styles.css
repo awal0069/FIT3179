@@ -202,13 +202,24 @@ h2 {
     }
 }
 
-/* CO2 Emissions specific styling if needed */
-#co2_emissions {
+/* CO2 Emissions specific styling */
+.co2-container {
     width: 100%;
-    height: 350px; /* Slightly taller to accommodate both charts */
+    height: 600px; /* Increased to fit 400px + 100px charts + padding */
 }
 
-/* Ensure the CO2 bubble matches others */
+/* Ensure the CO2 visualization fits within the container */
+#co2_emissions .vega-embed {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+#co2_emissions .vega-embed canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Maintain existing bubble styling */
 .bubble {
     background-color: #ffffff;
     border: 2px solid #ddd;
