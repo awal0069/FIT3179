@@ -6,43 +6,47 @@
   <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.20.8"></script>
+  <link rel="stylesheet" href="https://raw.githubusercontent.com/awal0069/FIT3179/refs/heads/main/css/styles.css">
   <style>
     body { 
       font-family: Arial, sans-serif; 
       margin: 0;
-      padding: 40px;
+      padding: 0;
       min-height: 100vh;
-      background-color: #fafafa;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     h2 {
-      text-align: left;
+      text-align: center;
       margin-bottom: 20px;
       font-size: 28px;
       font-weight: bold;
-      margin-left: 60px; /* aligns with bubble position */
+      color: #333;
+      width: 100%;
+      margin-top: 40px;
     }
 
     /* === Bubble container === */
     .bubble {
-      background-color: #fff;
+      background-color: rgba(255, 255, 255, 0.9);
       border: 2px solid #ddd;
       border-radius: 20px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       padding: 20px 30px;
-      width: 80vw;                /* wider bubble */
-      max-width: 1300px;          /* allows more space for charts */
-      margin-left: 75px;          /* shift toward left */
-      margin-top: 10px;
+      width: 80vw;
+      max-width: 1300px;
+      margin: 10px auto; /* Centered with auto margins */
     }
 
     /* === Grid layout for visualizations === */
     .grid-container {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto auto;
-      column-gap: 20px;          /* horizontal spacing */
-      row-gap: 5px;              /* reduced vertical gap */
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      column-gap: 20px;
+      row-gap: 5px;
       width: 100%;
     }
 
@@ -60,47 +64,36 @@
 
     .vis-container {
       width: 100%;
-      height: 300px;
+      height: 500px;
+    }
+
+    #choropleth_map {
+      width: 100%;
+      height: 100%;
     }
   </style>
 </head>
-<body>
+<body class="hero">
   <h2>Earth's Environmental Wellbeing</h2>
   
   <div class="bubble">
     <div class="grid-container">
-      <!-- Top Left - 1990 -->
+      <!-- Single interactive map -->
       <div class="grid-item">
-        <div id="vis1990" class="vis-container"></div>
-      </div>
-      
-      <!-- Top Right - 2000 -->
-      <div class="grid-item">
-        <div id="vis2000" class="vis-container"></div>
-      </div>
-      
-      <!-- Bottom Left - 2010 -->
-      <div class="grid-item">
-        <div id="vis2010" class="vis-container"></div>
-      </div>
-      
-      <!-- Bottom Right - 2015 -->
-      <div class="grid-item">
-        <div id="vis2015" class="vis-container"></div>
+        <div id="choropleth_map" class="vis-container"></div>
       </div>
     </div>
   </div>
 
   <script type="text/javascript">
-    // Function to embed all visualizations
-    function embedAllVisualizations() {
-      vegaEmbed('#vis1990', 'js/deforestation1990.vg.json', { actions: false }).catch(console.error);
-      vegaEmbed('#vis2000', 'js/deforestation2000.vg.json', { actions: false }).catch(console.error);
-      vegaEmbed('#vis2010', 'js/deforestation2010.vg.json', { actions: false }).catch(console.error);
-      vegaEmbed('#vis2015', 'js/deforestation2015.vg.json', { actions: false }).catch(console.error);
+    // Function to embed the interactive map
+    function embedVisualization() {
+      vegaEmbed('#choropleth_map', 'https://raw.githubusercontent.com/awal0069/FIT3179/refs/heads/main/js/mapp.json', { 
+        actions: false 
+      }).catch(console.error);
     }
 
-    document.addEventListener('DOMContentLoaded', embedAllVisualizations);
+    document.addEventListener('DOMContentLoaded', embedVisualization);
   </script>
 </body>
 </html>
