@@ -4,11 +4,33 @@
   "width": "container",
   "height": 500,
   "data": {
-    "url": "https://raw.githubusercontent.com/awal0069/FIT3179/refs/heads/main/data/forest_area_from_1990.csv"
+    "url": "https://raw.githubusercontent.com/awal0069/FIT3179/refs/heads/main/data/forest_area_with_region.csv"
   },
+  "params": [
+    {
+      "name": "region_selection",
+      "value": "All Regions",
+      "bind": {
+        "input": "select",
+        "options": [
+          "All Regions",
+          "Africa",
+          "Asia",
+          "Europe", 
+          "North America",
+          "Oceania",
+          "South America"
+        ],
+        "name": "Filter by Region: "
+      }
+    }
+  ],
   "transform": [
     {
       "filter": "datum.Entity !== 'World'"
+    },
+    {
+      "filter": "region_selection == 'All Regions' || datum.Region == region_selection"
     }
   ],
   "encoding": {
@@ -38,6 +60,7 @@
     },
     "tooltip": [
       {"field": "Entity", "type": "nominal", "title": "Country"},
+      {"field": "Region", "type": "nominal", "title": "Region"},
       {"field": "Year", "type": "temporal", "title": "Year"},
       {"field": "Share of land covered by forest", "type": "quantitative", "title": "Forest Area (%)", "format": ".2f"}
     ]
@@ -59,6 +82,7 @@
       "encoding": {
         "tooltip": [
           {"field": "Entity", "type": "nominal", "title": "Country"},
+          {"field": "Region", "type": "nominal", "title": "Region"},
           {"field": "Year", "type": "temporal", "title": "Year"},
           {"field": "Share of land covered by forest", "type": "quantitative", "title": "Forest Area (%)", "format": ".2f"}
         ]

@@ -139,3 +139,49 @@ h2 {
     border-radius: 4px;
     background-color: white;
 }
+
+/* Regional Analysis Grid */
+.regional-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 20px;
+    width: 80vw;
+    max-width: 1300px;
+    margin: 20px auto;
+}
+
+.region-bubble {
+    background-color: #ffffff;
+    border: 2px solid #ddd;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    height: fit-content;
+}
+
+.region-bubble h3 {
+    margin: 0 0 15px 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #2c5530;
+    text-align: center;
+    border-bottom: 2px solid #e8f5e8;
+    padding-bottom: 10px;
+}
+
+.region-bubble p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+    text-align: justify;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .regional-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+}
