@@ -4,7 +4,7 @@
   "width": "container",
   "height": 500,
   "data": {
-    "url": "../data/forest_area_from_1990.csv"
+    "url": "https://raw.githubusercontent.com/awal0069/FIT3179/refs/heads/main/data/forest_area_from_1990.csv"
   },
   "transform": [
     {
