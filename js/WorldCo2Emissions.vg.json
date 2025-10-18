@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Global CO₂ Emissions Over Time",
+    "title": "Global CO₂ Emissions Per Year",
     "config": {
         "title": {
             "fontSize": 20,
@@ -11,7 +11,11 @@
     "vconcat": [{
         "width": 1125,
         "height": 400,
-        "mark": { "type": "area", "color": "#333333" },
+        "mark": { 
+            "type": "area", 
+            "color": "#333333",
+            "tooltip": true
+        },
         "encoding": {
             "x": {
                 "field": "Year",
@@ -19,12 +23,32 @@
                 "scale": { "domain": { "param": "brush" } },
                 "axis": { "title": "", "tickCount": 10 }
             },
-            "y": { "field": "Annual CO₂ emissions", "type": "quantitative", "title": "CO₂ Emissions" }
-        }
+            "y": { 
+                "field": "Annual CO₂ emissions", 
+                "type": "quantitative", 
+                "title": "CO₂ Emissions (tonnes)" 
+            },
+            "tooltip": [
+                {"field": "Year", "type": "temporal", "title": "Year", "format": "%Y"},
+                {"field": "Annual CO₂ emissions", "type": "quantitative", "title": "CO₂ Emissions", "format": ",.0f"}
+            ]
+        },
+        "params": [{
+            "name": "hover",
+            "select": {
+                "type": "point",
+                "on": "mouseover",
+                "encodings": ["x"]
+            }
+        }]
     }, {
         "width": 1125,
         "height": 100,
-        "mark": { "type": "area", "color": "#333333" },
+        "mark": { 
+            "type": "area", 
+            "color": "#333333",
+            "tooltip": true
+        },
         "params": [{
             "name": "brush",
             "select": { "type": "interval", "encodings": ["x"] }
@@ -39,7 +63,11 @@
                 "field": "Annual CO₂ emissions",
                 "type": "quantitative",
                 "axis": { "tickCount": 3, "grid": false, "title": "" }
-            }
+            },
+            "tooltip": [
+                {"field": "Year", "type": "temporal", "title": "Year", "format": "%Y"},
+                {"field": "Annual CO₂ emissions", "type": "quantitative", "title": "CO₂ Emissions", "format": ",.0f"}
+            ]
         }
     }]
 }

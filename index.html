@@ -95,6 +95,10 @@
     </div>
   </div>
 
+  <div class="passage-bubble">
+    <p>CO2 emissions have grown exponentially since the Industrial Revolution, driven by coal, oil, and gas combustion across expanding industrial and transport systems. Annual global emissions have climbed to an all-time high exceeding 35 billion tonnes of CO2 per year and continue to rise. The geographic pattern of emissions has shifted dramatically over recent decades. In 1990 the United States was the dominant emitter, responsible for roughly 22.5% of global CO2 from 195 countries. Since then industrialization and energy-intensive development have propelled China to the forefront; by 2023 China accounted for about 31.5% of global CO2 emissions, a share larger than that of all other Asian countries combined. This reallocation of emissions between regions increases the importance of global cooperation on decarbonization, technology transfer, and emissions reductions to prevent further growth in atmospheric CO2 and associated climate impacts.</p>
+  </div>
+
   <script type="text/javascript">
     // Function to embed all visualizations
     function embedVisualizations() {
@@ -114,7 +118,7 @@
       }).catch(console.error);
       
       // Embed CO2 emissions by region visualization
-      vegaEmbed('#co2_region_emissions', 'js/Co2EmissionsByRegion.vg.json', { 
+      vegaEmbed('#co2_region_emissions', 'js/regionalCo2Percentage.json', { 
         actions: false 
       }).catch(console.error);
     }

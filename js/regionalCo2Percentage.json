@@ -1,68 +1,67 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "CO₂ Emissions Percentage by Region Over Time",
+    "title": "CO₂ Emissions Percentage by Region",
+    "width": "container",
+    "height": 500,
     "config": {
         "title": {
             "fontSize": 20,
             "anchor": "middle"
         }
     },
-    "data": { "url": "https://raw.githubusercontent.com/awal0069/FIT3179/refs/heads/main/data/annual-co-emissions-by-region-percentage.csv" },
-    "vconcat": [{
-        "width": 1125,
-        "height": 400,
-        "mark": "area",
-        "encoding": {
-            "x": {
-                "field": "Year",
-                "type": "temporal",
-                "scale": { "domain": { "param": "brush" } },
-                "axis": { "title": "", "tickCount": 10 }
+    "data": {
+        "url": "https://raw.githubusercontent.com/awal0069/FIT3179/refs/heads/main/data/regionalCo2Percentage.csv"
+    },
+    "mark": "bar",
+    "encoding": {
+        "x": {
+            "field": "Year",
+            "type": "ordinal",
+            "title": "Year"
+        },
+        "y": {
+            "field": "Annual CO2 emissions percentage",
+            "type": "quantitative",
+            "title": "Share of Global CO₂ Emissions (%)",
+            "axis": {
+                "format": ".1f"
             },
-            "y": { 
-                "field": "Annual CO₂ emissions percentage", 
-                "type": "quantitative", 
-                "title": "CO₂ Emissions (%)",
-                "axis": { "format": "%" },
-                "stack": true
+            "scale": {
+                "domain": [0, 100]
             },
-            "color": {
-                "field": "Entity",
-                "type": "nominal",
-                "title": "Region",
-                "scale": { "scheme": "category10" }
-            },
-            "tooltip": [
-                {"field": "Entity", "type": "nominal", "title": "Region"},
-                {"field": "Year", "type": "temporal", "title": "Year"},
-                {"field": "Annual CO₂ emissions percentage", "type": "quantitative", "title": "Emissions (%)", "format": ".1%"}
-            ]
-        }
-    }, {
-        "width": 1125,
-        "height": 100,
-        "mark": "area",
-        "params": [{
-            "name": "brush",
-            "select": { "type": "interval", "encodings": ["x"] }
-        }],
-        "encoding": {
-            "x": {
-                "field": "Year",
-                "type": "temporal",
-                "axis": { "tickCount": 10, "title": "Year Filter" }
-            },
-            "y": {
-                "field": "Annual CO₂ emissions percentage",
-                "type": "quantitative",
-                "axis": { "tickCount": 3, "grid": false, "title": "" },
-                "stack": true
-            },
-            "color": {
-                "field": "Entity",
-                "type": "nominal",
-                "scale": { "scheme": "category10" }
+            "stack": true
+        },
+        "color": {
+            "field": "Entity",
+            "type": "nominal",
+            "title": "Region",
+            "scale": {
+                "scheme": "tableau10",
+                "domain": [
+                    "Africa",
+                    "Asia (excl. China and India)",
+                    "China",
+                    "Europe (excl. EU-27)",
+                    "European Union (27)",
+                    "India",
+                    "International aviation",
+                    "International shipping",
+                    "North America (excl. USA)",
+                    "Oceania",
+                    "South America",
+                    "United States"
+                ],
+                "range": [
+                    "#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",
+                    "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf",
+                    "#aec7e8", "#ffbb78"
+                ]
             }
-        }
-    }]
+        },
+        "tooltip": [
+            {"field": "Entity", "type": "nominal", "title": "Region"},
+            {"field": "Year", "type": "ordinal", "title": "Year"},
+            {"field": "Annual CO2 emissions percentage", "type": "quantitative", "title": "Share of Emissions", "format": ".2f"}
+        ]
+    }
 }
