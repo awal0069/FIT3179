@@ -1,7 +1,7 @@
 import csv
 
-input_file = "FIT3179/data/forest-area-as-share-of-land-area.csv"
-output_file = "FIT3179/data/forest_area_from_1990.csv"
+input_file = "FIT3179/data/annual-co-emissions-by-region-percentage.csv"
+output_file = "FIT3179/data/regionalCo2Percentage.csv"
 
 with open(input_file, "r", newline="", encoding="utf-8") as infile, \
      open(output_file, "w", newline="", encoding="utf-8") as outfile:

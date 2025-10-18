@@ -1,0 +1,68 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "CO₂ Emissions Percentage by Region Over Time",
+    "config": {
+        "title": {
+            "fontSize": 20,
+            "anchor": "middle"
+        }
+    },
+    "data": { "url": "https://raw.githubusercontent.com/awal0069/FIT3179/refs/heads/main/data/annual-co-emissions-by-region-percentage.csv" },
+    "vconcat": [{
+        "width": 1125,
+        "height": 400,
+        "mark": "area",
+        "encoding": {
+            "x": {
+                "field": "Year",
+                "type": "temporal",
+                "scale": { "domain": { "param": "brush" } },
+                "axis": { "title": "", "tickCount": 10 }
+            },
+            "y": { 
+                "field": "Annual CO₂ emissions percentage", 
+                "type": "quantitative", 
+                "title": "CO₂ Emissions (%)",
+                "axis": { "format": "%" },
+                "stack": true
+            },
+            "color": {
+                "field": "Entity",
+                "type": "nominal",
+                "title": "Region",
+                "scale": { "scheme": "category10" }
+            },
+            "tooltip": [
+                {"field": "Entity", "type": "nominal", "title": "Region"},
+                {"field": "Year", "type": "temporal", "title": "Year"},
+                {"field": "Annual CO₂ emissions percentage", "type": "quantitative", "title": "Emissions (%)", "format": ".1%"}
+            ]
+        }
+    }, {
+        "width": 1125,
+        "height": 100,
+        "mark": "area",
+        "params": [{
+            "name": "brush",
+            "select": { "type": "interval", "encodings": ["x"] }
+        }],
+        "encoding": {
+            "x": {
+                "field": "Year",
+                "type": "temporal",
+                "axis": { "tickCount": 10, "title": "Year Filter" }
+            },
+            "y": {
+                "field": "Annual CO₂ emissions percentage",
+                "type": "quantitative",
+                "axis": { "tickCount": 3, "grid": false, "title": "" },
+                "stack": true
+            },
+            "color": {
+                "field": "Entity",
+                "type": "nominal",
+                "scale": { "scheme": "category10" }
+            }
+        }
+    }]
+}

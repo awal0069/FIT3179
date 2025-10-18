@@ -86,6 +86,15 @@
     </div>
   </div>
 
+  <!-- CO2 Emissions by Region Visualization Bubble -->
+  <div class="bubble">
+    <div class="grid-container">
+      <div class="grid-item">
+        <div id="co2_region_emissions" class="vis-container co2-container"></div>
+      </div>
+    </div>
+  </div>
+
   <script type="text/javascript">
     // Function to embed all visualizations
     function embedVisualizations() {
@@ -101,6 +110,11 @@
       
       // Embed CO2 emissions visualization
       vegaEmbed('#co2_emissions', 'js/WorldCo2Emissions.vg.json', { 
+        actions: false 
+      }).catch(console.error);
+      
+      // Embed CO2 emissions by region visualization
+      vegaEmbed('#co2_region_emissions', 'js/Co2EmissionsByRegion.vg.json', { 
         actions: false 
       }).catch(console.error);
     }

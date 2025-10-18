@@ -230,3 +230,14 @@ h2 {
     max-width: 1300px;
     margin: 10px auto;
 }
+
+/* CO2 Emissions by Region specific styling */
+#co2_region_emissions .vega-embed {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+#co2_region_emissions .vega-embed canvas {
+    max-width: 100%;
+    height: auto;
+}
