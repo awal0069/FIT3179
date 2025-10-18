@@ -20,27 +20,59 @@ body {
     align-items: center;
 }
 
+/* === Heading bubble === */
+.heading-bubble {
+    background-color: #ffffff;
+    border: 2px solid #ddd;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 15px 40px;
+    margin: 20px auto 20px auto;
+    text-align: center;
+    width: fit-content;
+    max-width: 80vw;
+}
+
+/* === Passage bubble === */
+.passage-bubble {
+    background-color: #ffffff;
+    border: 2px solid #ddd;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 25px 35px;
+    width: 80vw;
+    max-width: 1300px;
+    margin: 0 auto 20px auto;
+}
+
+.passage-bubble p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    text-align: justify;
+}
+
 /* Heading styles */
 h2 {
     text-align: center;
-    margin-bottom: 20px;
-    font-size: 28px;
+    margin: 0;
+    font-size: 36px;
     font-weight: bold;
     color: #333;
-    width: 100%;
-    margin-top: 40px;
+    line-height: 1.2;
 }
 
-/* === Bubble container - SOLID WHITE === */
+/* === Main visualization bubble === */
 .bubble {
-    background-color: #ffffff; /* Solid white, 100% opaque */
+    background-color: #ffffff;
     border: 2px solid #ddd;
     border-radius: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 20px 30px;
     width: 80vw;
     max-width: 1300px;
-    margin: 10px auto; /* Centered with auto margins */
+    margin: 10px auto;
 }
 
 /* === Grid layout for visualizations === */
@@ -85,18 +117,20 @@ h2 {
     display: none;
 }
 
-/* Style for the year selector */
+/* Style for the year selector - WHITE BACKGROUND */
 .vega-bind {
     margin: 10px 0;
     padding: 8px;
-    background-color: #f8f9fa;
+    background-color: #ffffff;
     border-radius: 4px;
     font-family: Arial, sans-serif;
+    border: 1px solid #ddd;
 }
 
 .vega-bind-name {
     font-weight: bold;
     margin-right: 10px;
+    color: #333;
 }
 
 .vega-bind select {

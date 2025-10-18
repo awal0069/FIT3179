@@ -7,74 +7,19 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.20.8"></script>
   <link rel="stylesheet" href="css/styles.css">
-  <style>
-    body { 
-      font-family: Arial, sans-serif; 
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 28px;
-      font-weight: bold;
-      color: #333;
-      width: 100%;
-      margin-top: 40px;
-    }
-
-    /* === Bubble container === */
-    .bubble {
-      background-color: rgba(255, 255, 255, 0.9);
-      border: 2px solid #ddd;
-      border-radius: 20px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      padding: 20px 30px;
-      width: 80vw;
-      max-width: 1300px;
-      margin: 10px auto; /* Centered with auto margins */
-    }
-
-    /* === Grid layout for visualizations === */
-    .grid-container {
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: auto;
-      column-gap: 20px;
-      row-gap: 5px;
-      width: 100%;
-    }
-
-    .grid-item {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .grid-item h3 {
-      margin: 5px 0;
-      text-align: left;
-      font-size: 14px;
-    }
-
-    .vis-container {
-      width: 100%;
-      height: 500px;
-    }
-
-    #choropleth_map {
-      width: 100%;
-      height: 100%;
-    }
-  </style>
 </head>
 <body class="hero">
-  <h2>Earth's Environmental Wellbeing</h2>
+  <div class="heading-bubble">
+    <h2>Earth's Environmental Wellbeing</h2>
+  </div>
+
+  <div class="passage-bubble">
+    <p>Earth's environmental wellbeing is increasingly at risk due to the combined effects of deforestation, rising carbon dioxide emissions, and escalating air pollution. Large-scale forest loss reduces the planet's capacity to absorb CO₂, intensifying global warming and disrupting ecosystems. Elevated CO₂ levels from industrial activity, transport, and energy production contribute to climate change, while harmful air pollutants such as particulate matter and nitrogen oxides degrade air quality and endanger human health. These interconnected issues weaken biodiversity, disrupt weather patterns, and strain natural resources, emphasizing the urgent need for coordinated global action to promote sustainable development and restore ecological balance.</p>
+  </div>
+
+  <div class="passage-bubble">
+  <p>The map below shows a general increase in deforestation between the years of 1990 and 2015. Trends indicate that as societies have grown more environmentally conscious in recent years, deforestation rates have slowed — with some countries such as Costa Rica abd Russia reportedly eliminating deforestation entirely by 2015.</p>
+  </div>
   
   <div class="bubble">
     <div class="grid-container">
