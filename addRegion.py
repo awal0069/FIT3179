@@ -305,8 +305,8 @@ def main(input_path, output_path, mapping_url=MAPPING_CSV_URL):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Add Region (continent) column to forest CSV.")
-    parser.add_argument("--input", "-i", default="FIT3179/data/forest_area_from_1990.csv", help="Input CSV path")
-    parser.add_argument("--output", "-o", default="FIT3179/data/forest_area_with_region.csv", help="Output CSV path")
+    parser.add_argument("--input", "-i", default="FIT3179/data/ocean-plastic-waste-per-capita-vs-gdp.csv", help="Input CSV path")
+    parser.add_argument("--output", "-o", default="FIT3179/data/regional-ocean-plastic-waste-per-capita-vs-gdp.csv", help="Output CSV path")
     parser.add_argument("--mapping-url", "-m", default=MAPPING_CSV_URL, help="URL to country->continent mapping CSV")
     args = parser.parse_args()
     main(args.input, args.output, mapping_url=args.mapping_url)
