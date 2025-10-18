@@ -149,6 +149,7 @@ h2 {
     width: 80vw;
     max-width: 1300px;
     margin: 20px auto;
+    padding: 0;
 }
 
 .region-bubble {
@@ -158,6 +159,7 @@ h2 {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 25px;
     height: fit-content;
+    margin: 0;
 }
 
 .region-bubble h3 {
@@ -178,10 +180,24 @@ h2 {
     text-align: justify;
 }
 
+/* Calculate exact widths to match visualization bubble */
+.regional-grid {
+    width: calc(80vw + 60px); /* Same as .bubble width + padding */
+    max-width: calc(1300px + 60px); /* Same as .bubble max-width + padding */
+    margin: 20px auto;
+}
+
+.region-bubble {
+    width: 100%;
+    box-sizing: border-box;
+}
+
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
     .regional-grid {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
+        width: 80vw;
+        max-width: 1300px;
     }
 }
